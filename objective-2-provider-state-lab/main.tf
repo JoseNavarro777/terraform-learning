@@ -10,6 +10,7 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
 resource "azurerm_resource_group" "objective2" {
   name     = "rg-terraform-objective2"
   location = "East US"
@@ -19,4 +20,3 @@ resource "azurerm_resource_group" "objective2" {
     objective   = "2"
   }
 }
-
