@@ -33,6 +33,7 @@ resource "azurerm_virtual_network" "objective3" {
   tags = {
     environment = "lab"
     objective   = "3"
+    purpose     = "core-workflow-lab"
   }
 }
 
