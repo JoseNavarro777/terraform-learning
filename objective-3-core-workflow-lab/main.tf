@@ -43,3 +43,10 @@ resource "azurerm_subnet" "objective3" {
   virtual_network_name = azurerm_virtual_network.objective3.name
   address_prefixes     = ["10.30.1.0/24"]
 }
+
+resource "azurerm_subnet" "database" {
+  name                 = "snet-db"
+  resource_group_name  = azurerm_resource_group.objective3.name
+  virtual_network_name = azurerm_virtual_network.objective3.name
+  address_prefixes     = ["10.30.2.0/24"]
+}
