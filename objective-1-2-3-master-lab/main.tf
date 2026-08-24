@@ -33,3 +33,10 @@ resource "azurerm_subnet" "database" {
   virtual_network_name = azurerm_virtual_network.master.name
   address_prefixes     = ["10.40.2.0/24"]
 }
+
+resource "azurerm_subnet" "backend" {
+  name                 = "snet-backend"
+  resource_group_name  = azurerm_resource_group.master.name
+  virtual_network_name = azurerm_virtual_network.master.name
+  address_prefixes     = ["10.40.3.0/24"]
+}
