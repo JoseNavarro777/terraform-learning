@@ -5,6 +5,7 @@ resource "azurerm_resource_group" "master" {
   tags = {
     environment = "lab"
     project     = "terraform-cert-master"
+    owner       = "terraform-cert"
   }
 }
 
@@ -17,6 +18,7 @@ resource "azurerm_virtual_network" "master" {
   tags = {
     environment = "lab"
     project     = "terraform-cert-master"
+    owner       = "terraform-cert"
   }
 }
 
