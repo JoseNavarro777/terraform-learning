@@ -9,3 +9,6 @@
 crash.log
 crash.*.log
 tfplan
+
+*.tfvars
+*.tfvars.json
