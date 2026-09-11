@@ -35,5 +35,8 @@ module "network" {
     database = {
       address_prefixes = ["10.90.2.0/24"]
     }
+    management = {
+      address_prefixes = ["10.90.3.0/24"]
+    }
   }
 }
