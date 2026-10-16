@@ -2,28 +2,25 @@
 
 Hands-on Terraform labs documenting my progress toward the HashiCorp Terraform Associate certification and my broader transition into DevOps, Infrastructure as Code, and cloud automation.
 
-This repository is intentionally built as a learning portfolio. Each lab reinforces Terraform concepts through practical exercises while also applying Git and GitHub workflows such as feature branches, commits, diffs, Pull Requests, version control, and repository hygiene.
+This repository is a learning portfolio. Each lab reinforces Terraform concepts through practical exercises while also applying Git and GitHub workflows such as feature branches, commits, diffs, pull requests, version control, and repository hygiene.
 
 ## Goals
 
-The objectives of this repository are to:
-
 * Build a strong practical understanding of Infrastructure as Code (IaC)
-* Prepare for the HashiCorp Terraform Associate certification
-* Practice managing cloud infrastructure declaratively with Terraform
+* Apply Terraform concepts to real cloud infrastructure
 * Develop confidence with Terraform CLI workflows
-* Understand providers, state, version constraints, dependency management, and Terraform planning behavior
+* Understand providers, state, version constraints, dependency management, and planning behavior
 * Apply Git and GitHub practices while developing infrastructure code
-* Build skills relevant to future DevOps / Platform Engineering roles
+* Build skills relevant to DevOps and Platform Engineering roles
 
 ## Technologies
 
 * Terraform
 * Microsoft Azure
-* AzureRM Provider
+* AzureRM provider
 * Azure CLI
-* Git
-* GitHub
+* HCP Terraform
+* Git and GitHub
 * HCL (HashiCorp Configuration Language)
 
 ## Progress
@@ -32,6 +29,7 @@ The objectives of this repository are to:
 * Objective 2 — Completed
 * Objective 3 — Completed
 * Objectives 1–3 Master Lab — Completed
+* HashiCorp Terraform Associate (004) — Passed September 17, 2026
 
 ## Labs
 
@@ -70,7 +68,7 @@ Topics practiced:
 * Terraform state inspection
 * Updating existing infrastructure
 * Resource tags
-* Terraform state vs real infrastructure
+* Terraform state versus real infrastructure
 
 ---
 
@@ -139,7 +137,7 @@ Topics practiced:
 * Infrastructure updates
 * Safe change review
 * Terraform plan interpretation
-* Git branches and Pull Requests
+* Git branches and pull requests
 
 ---
 
@@ -194,49 +192,43 @@ Topics practiced:
 
 ### Objectives 1–3 Master Lab
 
-`objective-1-2-3-master-lab`
+`master-lab/`
 
-End-to-end lab combining the major concepts from Objectives 1, 2, and 3 into one Terraform lifecycle.
+End-to-end Terraform lab using Azure and HCP Terraform. The Azure resources used in the exercises were destroyed at the end of the lab. The configuration remains available to reproduce the exercises.
 
-Infrastructure deployed:
+Infrastructure deployed during the lab:
 
-* Azure Resource Group
-* Virtual Network
+* Azure resource groups
+* Virtual network
 * Application subnet
 * Database subnet
-* Backend subnet
+* Management subnet
 
 Topics practiced:
 
-* Terraform CLI version constraints
-* AzureRM provider requirements
-* Provider initialization
-* Dependency lock file
-* Variables and `terraform.tfvars`
-* Implicit resource dependencies
-* Terraform dependency graph
-* `terraform fmt`
-* `terraform validate`
-* `terraform plan`
-* Saved plans with `-out`
-* Applying saved plans
-* Terraform state inspection
-* Idempotence and reconciliation
-* Day-2 infrastructure changes
-* `terraform plan -detailed-exitcode`
-* `-target`
-* `-replace`
-* `-refresh=false`
-* `-refresh-only`
-* `-auto-approve`
-* `-parallelism`
-* Partial apply failure behavior
-* `terraform plan -destroy`
-* `terraform destroy`
-* Git diff and staged diff review
-* Feature branches
-* Pull Requests
-* Merge and branch cleanup
+* Terraform and provider version constraints
+* AzureRM provider requirements and aliases
+* Provider initialization and `.terraform.lock.hcl`
+* Variables, `terraform.tfvars` precedence, locals, outputs, complex types, functions, and expressions
+* `for_each` and `count`
+* Implicit dependencies and `depends_on`
+* Lifecycle rules, including `create_before_destroy`
+* Variable validation, preconditions, postconditions, and check blocks
+* Sensitive and ephemeral values
+* Reusable local modules, module variables and outputs, and provider passing
+* Versioned registry modules
+* State inspection, drift, and refresh-only plans
+* `moved` and `removed` blocks
+* CLI and configuration-driven imports
+* Saved plans, replacement, and Terraform logging
+* HCP Terraform workspaces and remote execution
+* Local-to-HCP state migration and state locking
+* CLI-driven workflow, projects, and variable sets
+* Azure dynamic credentials using workload identity federation (OIDC)
+
+HCP run triggers, policies, teams and permissions, and health assessments were also reviewed. Availability of some features depends on the HCP Terraform plan.
+
+The HCP workspace state is empty after cleanup. Because the Terraform configuration remains, a regular plan can propose recreating the lab infrastructure.
 
 ## Terraform and Git Workflow
 
@@ -271,108 +263,8 @@ Commit
         ↓
 Push
         ↓
-Pull Request
+Pull request
         ↓
 Review and merge
         ↓
 Sync local main
-```
-
-## Repository Hygiene
-
-Terraform-generated and environment-specific files are handled intentionally.
-
-Typically committed:
-
-* `.tf` configuration files
-* `.terraform.lock.hcl`
-* `.gitignore`
-
-Typically ignored:
-
-* `.terraform/`
-* `*.tfstate`
-* `*.tfstate.*`
-* saved plan files such as `tfplan`
-* crash logs
-
-This keeps Terraform source configuration and dependency metadata in version control while excluding local working data and potentially sensitive state.
-
-## Core Terraform Mental Model
-
-Terraform is declarative.
-
-The configuration describes the desired infrastructure, while Terraform uses state and provider information to calculate the changes needed to reach that desired state.
-
-```text
-Configuration
-"What I want"
-        ↓
-Terraform state
-"What Terraform knows and manages"
-        ↓
-Cloud infrastructure
-"What actually exists"
-```
-
-`terraform plan` evaluates the difference and proposes the actions needed to reconcile them.
-
-## Learning Approach
-
-Rather than studying Terraform only from documentation, I use hands-on labs to connect certification concepts with real Terraform behavior.
-
-The learning process increasingly follows:
-
-```text
-Concept
-→ Exam-style question
-→ Explanation
-→ Practical action
-→ Verification
-```
-
-This helps reinforce not only which Terraform command to use, but also why Terraform behaves the way it does.
-
-The labs also progressively incorporate realistic DevOps practices such as:
-
-* Feature branches
-* Pull Requests
-* Infrastructure change review
-* Git diff review
-* Terraform plan review
-* Repository hygiene
-* Reproducible provider dependencies
-* Safe infrastructure lifecycle management
-
-## Current Focus
-
-Currently studying:
-
-**HashiCorp Terraform Associate**
-
-Completed so far:
-
-* Objective 1
-* Objective 2
-* Objective 3
-* Objectives 1–3 Master Lab
-
-The next phase of the repository will continue with the remaining Terraform Associate objectives while gradually introducing additional DevOps practices when they become relevant to the certification material.
-
-## Longer-Term Direction
-
-Terraform is part of a broader effort to strengthen my skills in:
-
-* Infrastructure as Code
-* Cloud automation
-* Git-based engineering workflows
-* CI/CD
-* Containers and Kubernetes
-* DevOps and Platform Engineering
-
-The repository will continue evolving as new Terraform certification objectives and practical labs are completed.
-
----
-
-> Learning Terraform one concept, one lab, and one commit at a time.
-
