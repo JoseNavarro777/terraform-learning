@@ -52,4 +52,4 @@ Use branches and pull requests to review infrastructure changes.
 
 Next Learning Area
 
-Continue toward CI/CD by practicing GitHub Actions workflows for Terraform formatting, validation, plan review, and controlled deployment.
+Networking applied to DevOps
